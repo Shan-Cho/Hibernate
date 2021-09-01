@@ -1,5 +1,7 @@
 package com.chouguleindustries.hibernate.camera;
 
+import java.util.List;
+
 public interface CameraDAO {
 
 	int save(CameraEntity entity);
@@ -9,4 +11,6 @@ public interface CameraDAO {
 	void updatebytypeById(int id, String type);
 
 	void deleteById(int id);
+
+	void saveList(List<CameraEntity> entity1);
 }

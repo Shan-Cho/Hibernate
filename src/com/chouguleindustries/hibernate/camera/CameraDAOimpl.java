@@ -1,5 +1,8 @@
 package com.chouguleindustries.hibernate.camera;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,8 +18,11 @@ public class CameraDAOimpl implements CameraDAO {
 		try (Session session = factory.openSession()) {
 			Transaction transaction = session.beginTransaction();
 			int primaryKey = (int) session.save(entity);
-			transaction.commit();
+			// transaction.commit();
 			System.out.println("save :" + primaryKey);
+			session.flush();
+			session.clear();
+			transaction.rollback();
 			return primaryKey;
 		}
 	}
@@ -38,8 +44,10 @@ public class CameraDAOimpl implements CameraDAO {
 			entity = (CameraEntity) session.get(CameraEntity.class, id);
 			entity.setType(type);
 			session.update(entity);
-			session.getTransaction().commit();
+			// session.getTransaction().commit();
 			System.out.println("updated name : " + type);
+			session.flush();
+			session.clear();
 		}
 	}
 
@@ -50,9 +58,20 @@ public class CameraDAOimpl implements CameraDAO {
 			CameraEntity entity = new CameraEntity();
 			entity = (CameraEntity) session.get(CameraEntity.class, id);
 			session.delete(entity);
-			session.getTransaction().commit();
+			// session.getTransaction().commit();
 			System.out.println("deleted :" + id);
+			session.flush();
+			session.clear();
 		}
+	}
+
+	@Override
+	public void saveList(List<CameraEntity> entity1) {
+		List<CameraEntity> camentity = new ArrayList<CameraEntity>();
+		for (CameraEntity cameraEntity : camentity) {
+			camentity.addAll(entity1);
+		}
+
 	}
 
 }
