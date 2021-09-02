@@ -34,6 +34,12 @@ public class CameraTester {
 		System.out.println("delete");
 		dao.deleteById(1);
 
+		List<Integer> id = new ArrayList<Integer>();
+		System.out.println("delete list");
+		id.add(1);
+		id.add(2);
+		dao.deleteList(id);
+
 	}
 
 }

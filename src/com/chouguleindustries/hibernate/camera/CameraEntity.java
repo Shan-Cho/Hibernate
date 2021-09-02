@@ -55,6 +55,20 @@ public class CameraEntity implements Serializable {
 		this.flashModes = flashModes;
 	}
 
+	public CameraEntity(double price, int warrenty, int noOfFiltersEffect, boolean isWIFI, String type,
+			String countryOfOrigin, float weight, boolean isAutoFocus, String flashModes) {
+		super();
+		this.price = price;
+		this.warrenty = warrenty;
+		this.noOfFiltersEffect = noOfFiltersEffect;
+		this.isWIFI = isWIFI;
+		this.type = type;
+		this.countryOfOrigin = countryOfOrigin;
+		this.weight = weight;
+		this.isAutoFocus = isAutoFocus;
+		this.flashModes = flashModes;
+	}
+
 	@Override
 	public String toString() {
 		return "CameraEntity [id=" + id + ", price=" + price + ", warrenty=" + warrenty + ", noOfFiltersEffect="
